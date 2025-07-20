@@ -7,34 +7,99 @@ h1 {
 	color: white;
 	font-size: 4rem;
 	font-family: sans-serif;
+	background: linear-gradient(90deg, #4facfe, #00f2fe);
+	padding: 20px;
+}
+
+@keyframes gradientShift {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .calculator {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	width: 50%;
+	margin: auto;
+	max-width: 300px;
 }
 
-#output {	
+#output {
 	font-size: 3rem;
 	font-family: monospace;
 	margin-bottom: 0;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	height: 50px;
+	grid-column: span 2;
+	text-align: right;
+	padding-right: 10px;
+	background: linear-gradient(to right, #ffffff, #e0e0e0);
+	border: 2px solid #4facfe;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .inputs {
-	display: flex;
-	flex-flow: column;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	grid-template-columns: 2fr 1fr;
+	grid-gap: 20px;
+	align-items: center;
 }
 
 .numbers {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 60px 60px 60px;
 	grid-gap: 10px;
 	align-content: center;
+	width: 100%;
+	justify-content: flex-end;
+}
+
+.operators {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
 }
 
 button {
 	cursor: pointer;
+	width: 60px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(to bottom, #4facfe, #00f2fe);
+	border: none;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	color: white;
+	font-size: 1.5rem;
+	font-weight: bold;
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+	transform: scale(1.1);
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+	transform: scale(1);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .digit {
@@ -43,4 +108,32 @@ button {
 
 .middle {
 	grid-column: 2 / span 1;
+}
+
+.theme-buttons {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	display: flex;
+	gap: 10px;
+}
+
+.theme {
+	width: 30px;
+	height: 30px;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.theme.default {
+	background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+}
+
+.theme.green {
+	background: linear-gradient(to right, #43cea2 0%, #185a9d 100%);
+}
+
+.theme.red {
+	background: linear-gradient(to right, #ff512f 0%, #dd2476 100%);
 }
